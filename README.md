@@ -9,7 +9,8 @@ kubernetes > 1.8.0
 
 Change SERVER_ADDR in the client deployment config to your cluster's record.
 
-# Example output from AKS (Azure managed Kubernetes)
+## 1 Example output from AKS (Azure managed Kubernetes)
+Standard D2 v2 (2 vcpus, 7 GB memory)
 ```
 iteration:1  t:16     latency  =  171 us
 iteration:2  t:39     latency  =  225 us
@@ -33,6 +34,12 @@ iteration:19  t:35     latency  =  176 us
 iteration:20  t:14     latency  =  218 us
 ```
 
-# To add
+## 2 Setup
+```
+kubectl apply -f ./service
+```
+
+
+## To add
 antiafinity or daemonset
 make sure client is not on the same node as server.
