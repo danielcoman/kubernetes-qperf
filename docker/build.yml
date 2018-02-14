@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+
+  docker-perf:
+    build:
+      context: ./dperf
+    image: danielcoman/docker-perf:latest
