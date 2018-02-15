@@ -1,17 +1,20 @@
 #!/bin/sh
 
 iteration=1
-t=0
+t=10
 
 echo "Running as ${SERVICE_TYPE}"
+echo "SERVER_ADDR ${SERVER_ADDR}"
+echo "SERVER_PORT ${SERVER_PORT}"
+
 
 if [ ${SERVICE_TYPE} == "server" ] ; then
-  qperf --listen_port 443
+  qperf -lp ${SERVER_PORT}
 elif [ ${SERVICE_TYPE} == "client" ] ; then
   while true ; do
     sleep 1
     t=$(shuf -i ${QPERF_INTERVAL} -n 1)
-      lat=$(qperf -t ${t} --use_bits_per_sec ${SERVER_ADDR} --listen_port 443 tcp_lat | grep "latency")
+      lat=$(qperf -t ${t} --use_bits_per_sec ${SERVER_ADDR} -lp ${SERVER_PORT} tcp_lat | grep "latency")
     echo "iteration:${iteration}  t:${t} ${lat}"
     let iteration++
   done
