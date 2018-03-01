@@ -18,4 +18,7 @@ elif [ ${SERVICE_TYPE} == "client" ] ; then
     echo "iteration:${iteration}  t:${t} ${lat}"
     let iteration++
   done
+elif [ ${SERVICE_TYPE} == "ping" ] ; then
+  sleep 1
+  ping -i 5 ${SERVER_ADDR} | awk  -F'='  '{print$4}'
 fi

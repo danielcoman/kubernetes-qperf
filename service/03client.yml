@@ -21,7 +21,7 @@ spec:
         image: danielcoman/docker-qperf:latest
         env:
         - name: SERVICE_TYPE
-          value: "client"
+          value: "ping"
         - name: SERVER_ADDR
           value: "server.qperf.svc.cluster.local"
         - name: SERVER_PORT
